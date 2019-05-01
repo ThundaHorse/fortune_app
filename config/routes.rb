@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/lotto_numbers' => 'api/fortunes#lucky_numbers'
   get '/website_tracking' => 'api/fortunes#tracking'
   get '/beer' => 'api/fortunes#beer_song'
+  get '/testsite' => 'api/fortunes#testing'
 end

@@ -45,5 +45,19 @@ class Api::FortunesController < ApplicationController
     render 'websites_tracking.json.jbuilder' 
   end 
 
+  def testing 
+    require 'http'
+
+    response = HTTP.get('https://api.wordnik.com/v4/word.json/weight/definitions?limit=5&includeRelated=false&useCanonical=false&includeTags=false&api_key=ac6099e63826b8650f05e22c4cc08baa2f21668e3f16176fd')
+
+    list = response.parse[0]['text']
+
+    @word = list 
+
+    system p @word
+
+    render 'definition.json.jbuilder'
+  end 
+
 end
 
