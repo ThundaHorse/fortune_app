@@ -21,14 +21,29 @@ class Api::FortunesController < ApplicationController
     render 'lotto_numbers_view.json.jbuilder'
   end 
 
+  def beer_song
+    verses = [] 
+
+    i = 99 
+    while i > 0 
+      if i - 1 == 0 
+        verses << "No more bottles of beer on the wall, no more bottles of beer. Go to the store buy some more, 99 bottles of beer on the wall"
+      else 
+        verses << "#{i} bottles of beer on the wall, #{i} bottles of beer, take one down and pass it around, #{i - 1} bottles of beer on the wall" 
+      end 
+      i -= 1 
+    end 
+
+    @song_lyrics = verses
+
+    render 'song_lyrics.json.jbuilder'
+  end 
+
   def tracking 
     @@count += 1 
     @count = @@count
     render 'websites_tracking.json.jbuilder' 
   end 
 
-  def beer_song 
-    
-  end 
-
 end
+
